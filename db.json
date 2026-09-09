@@ -1,5 +1,4 @@
 {
-  "admin": [],
   "doctor": [],
   "patient": [
     {
@@ -13,8 +12,5 @@
       "id": "nRoaPvbGdkk"
     }
   ],
-  "department": [],
-  "appointment": [],
-  "$schema": "./node_modules/json-server/schema.json"
-  
+  "appointment": []
 }

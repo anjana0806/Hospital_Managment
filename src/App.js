@@ -1,7 +1,6 @@
 import React from "react";
 
-import Main from "./Pages/Main";
-import AdminLogin from "./Pages/AdminLogin";
+import Index from "./Pages/Index";
 import PatientLogin from "./Pages/PatientLogin";
 import PatientRegistration from "./Pages/PatientRegistration";
 import PatientDashboard from "./Pages/PatientDashboard";
@@ -13,6 +12,7 @@ import ViewAppointment from "./Pages/ViewAppointment";
 import ForgotPassword from "./Pages/ForgotPassword";
 
 import Header from "./Component/Header";
+import Header1 from "./Component/Header1";
 import Sidebar from "./Component/Sidebar";
 import Sidebar1 from "./Component/Sidebar1";
 import Footer from "./Component/Footer";
@@ -20,12 +20,10 @@ import Footer from "./Component/Footer";
 
 function App() {
     const path = window.location.pathname;
-    if (path === "/" || path === "/main") {
-        return <Main />;
+    if (path === "/" || path === "/Index") {
+        return <Index />;
     }
-    if (path === "/AdminLogin") {
-        return <AdminLogin />;
-    }
+
 
     if (path === "/PatientLogin") {
         return <PatientLogin />;
@@ -75,7 +73,7 @@ function App() {
     if (path === "/DoctorDashboard") {
         return (
             <>
-                <Header />
+                <Header1 />
                 <Sidebar1 />
                 <DoctorDashboard />
                 <Footer />
