@@ -56,7 +56,7 @@ function Sidebar1() {
                     Doctor Dashboard
                 </a>
 
-                <a href="/ViewAppoinment">
+                <a href="/ViewAppointment">
                     <i className="bi bi-calendar-check-fill"></i>
                     Appopintments
                 </a>

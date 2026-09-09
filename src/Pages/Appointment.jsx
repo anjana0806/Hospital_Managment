@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 const createAppointment = async (appointmentData) => {
-  const response = await fetch("/api/appointment", {
+  // json-server saves appointment records in the "appointments" array in db.json.
+  const response = await fetch("http://localhost:3001/appointment", {
     method: "POST",                                          
     headers: {
       "Content-Type": "application/json",

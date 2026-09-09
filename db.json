@@ -1,16 +1,38 @@
 {
-  "doctor": [],
-  "patient": [
+  "doctor": [
+    [
+      {
+        "id": 1,
+        "name": "Dr. Smith",
+        "email": "anju@gmail.com",
+        "password": "password123"
+      },
+      {
+        "id": 2,
+        "name": "Dr. Smith",
+        "email": "uma@gmail.com",
+        "password": "123"
+      }
+    ],
     {
-      "firstName": "anju",
-      "lastName": "rathod",
-      "gender": "Female",
-      "phone": "7452387788",
-      "email": "anju@gmail.com",
-      "password": "123",
-      "address": "edrftghyujnmk",
-      "id": "nRoaPvbGdkk"
+      "name": "Doctor",
+      "email": "uma@gmail.com",
+      "password": "1234",
+      "id": "QMUjucVqY9g"
     }
   ],
-  "appointment": []
+  "patient": [],
+  "appointment": [
+    {
+      "patient_name": "fd",
+      "phone": "1234567890",
+      "department": "Gynecology",
+      "doctor": "Dr. Ananya Reddy",
+      "appointment_date": "2026-08-31",
+      "appointment_time": "16:45",
+      "problem": "zsxdcftvgbhnjmk,l",
+      "id": "Zzrwu1bgSyQ"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

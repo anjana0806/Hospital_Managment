@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+
 function PatientRegistration() {
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [gender, setGender] = useState("");
@@ -8,430 +10,303 @@ function PatientRegistration() {
     const [address, setAddress] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-   const handleRegister = async (e) => { e.preventDefault();
-    if (
-        firstName === "" ||
-        lastName === "" ||
-        gender === "" ||
-        phone === "" ||
-        email === "" ||
-        address === "" ||
-        password === "" ||
-        confirmPassword === ""
-    )
-    {
-        alert("Please fill all the fields");
-        return;
-    }
-    if (password !== confirmPassword) {
-        alert("Password and Confirm Password do not match");
-        return;
-    }
-    const patient = {
-        firstName: firstName,
-        lastName: lastName,
-        gender: gender,
-        phone: phone,
-        email: email,
-        password: password,
-        address: address
-    };
-    try {
-        const response = await fetch("http://localhost:3001/patient", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(patient)
-        });
-        if (response.ok) {
-            alert("Patient Registered Successfully!!!");
-            setFirstName("");
-            setLastName("");
-            setGender("");
-            setPhone("");
-            setEmail("");
-            setAddress("");
-            setPassword("");
-            setConfirmPassword("");
-        } else {
-            alert("Registration Failed!!!");
+
+    const handleRegister = async (e) => {
+
+        e.preventDefault();
+
+        if (
+            firstName === "" ||
+            lastName === "" ||
+            gender === "" ||
+            phone === "" ||
+            email === "" ||
+            address === "" ||
+            password === "" ||
+            confirmPassword === ""
+        ) {
+            alert("Please fill all the fields");
+            return;
         }
-    } catch (error) {
-        console.log(error);
-        alert("Server is not running!!!");
-    }
-};
+
+        if (password !== confirmPassword) {
+            alert("Password and Confirm Password do not match");
+            return;
+        }
+
+        const patient = {
+            firstName: firstName,
+            lastName: lastName,
+            gender: gender,
+            phone: phone,
+            email: email,
+            password: password,
+            address: address,
+            status: "Registered",
+            createdAt: new Date().toISOString()
+        };
+
+        try {
+
+            const response = await fetch(
+                "http://localhost:3001/patient",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(patient)
+                }
+            );
+
+            if (response.ok) {
+
+                const savedPatient = await response.json();
+
+                const patients = JSON.parse(
+                    localStorage.getItem("patients") || "[]"
+                );
+
+                localStorage.setItem(
+                    "patients",
+                    JSON.stringify([
+                        ...patients,
+                        savedPatient
+                    ])
+                );
+
+                alert("Patient Registered Successfully!!!");
+
+                setFirstName("");
+                setLastName("");
+                setGender("");
+                setPhone("");
+                setEmail("");
+                setAddress("");
+                setPassword("");
+                setConfirmPassword("");
+
+            } else {
+
+                alert("Registration Failed!!!");
+
+            }
+
+        } catch (error) {
+
+            console.log(error);
+            alert("Server is not running!!!");
+
+        }
+    };
+
     return (
         <>
             <style>{`
-                * {
-                    box-sizing: border-box;
+                .hospital-title {
+                    font-size: 20px;
+                    font-weight: bold;
                 }
 
-                body {
-                    margin: 0;
-                    padding: 0;
-                    font-family: Arial, sans-serif;
-                    background-color: #E6F2DD;
-                }
-
-                .registration-page {
-                    min-height: 100vh;
-                    padding: 40px 20px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    overflow:hidden;
-                }
-
-                .registration-box {
-                    width: 100%;
-                    max-width: 850px;
-                    background-color: #88BDA4;
-                    padding: 30px;
-                    border-radius: 10px;
+                .hospital-subtitle {
+                    font-size: 16px;
                 }
 
                 .registration-title {
-                    text-align: center;
                     font-size: 30px;
                     font-weight: bold;
                     color: #173B4D;
-                    margin-bottom: 30px;
                 }
 
-                .form-row {
-                    display: flex;
-                    gap: 20px;
-                }
-
-                .form-group {
-                    width: 100%;
-                    margin-bottom: 18px;
-                }
-
-                .form-group label {
-                    display: block;
-                    font-size: 16px;
-                    font-weight: bold;
+                .section-title {
                     color: #173B4D;
-                    margin-bottom: 8px;
+                    font-weight: bold;
+                    font-size: 22px;
+                }
+
+                label {
+                    font-weight: 600;
+                    color: #29434E;
                 }
 
                 .required {
-                    color: red;
+                    color: #D9534F;
                 }
 
-                .form-group input,
-                .form-group textarea {
-                    width: 100%;
-                    padding: 10px 15px;
-                    border: none;
-                    border-radius: 7px;
-                    font-size: 16px;
-                    outline: none;
-                    font-family: Arial, sans-serif;
-                }
-
-                .form-group input {
+                .form-control,
+                .form-select {
                     height: 48px;
+                    border-radius: 8px;
+                    border: 1px solid #C9DDE3;
                 }
 
-                .form-group textarea {
-                    height: 90px;
-                    resize: none;
+                .form-control:focus,
+                .form-select:focus {
+                    outline: none;
+                    box-shadow: none;
+                    border-color: #C9DDE3;
                 }
 
-                .gender-box {
+                input:-webkit-autofill {
+                    -webkit-box-shadow: 0 0 0 1000px white inset;
+                    box-shadow: 0 0 0 1000px white inset;
+                }
+
+                .btn-register {
+                    background: #E6F2DD;
+                    color: black;
+                    padding: 12px 35px;
+                    font-size: 17px;
+                    border-radius: 8px;
+                    border: none;
+                }
+
+                .login-link {
+                    text-align: center;
+                    margin-top: 15px;
+                    color: #40545C;
+                }
+
+                .gender-options {
                     display: flex;
                     gap: 25px;
                     align-items: center;
-                    height: 48px;
+                    margin-top: 10px;
                 }
 
-                .gender-option {
+                .gender-options .form-check {
                     display: flex;
                     align-items: center;
                     gap: 7px;
-                    color: #173B4D;
-                    font-size: 16px;
                 }
 
-                .gender-option input {
-                    width: auto;
-                    height: auto;
+                .gender-options .form-check-input {
+                    width: 18px;
+                    height: 18px;
+                    margin: 0;
                 }
 
-                .button-area {
-                    text-align: center;
-                    margin-top: 20px;
+                .gender-options .form-check-label {
+                    margin: 0;
+                    font-weight: normal;
+                    color: #29434E;
                 }
 
-                .register-button,
-                .cancel-button {
-                    padding: 11px 35px;
-                    border: none;
-                    border-radius: 7px;
-                    font-size: 16px;
-                    font-weight: bold;
-                    cursor: pointer;
-                }
-
-                .register-button {
+                .main-content {
                     background-color: #E6F2DD;
-                    color: #173B4D;
+                    min-height: 100vh;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                 }
 
-                .cancel-button {
-                    background-color: white;
-                    color: #173B4D;
-                    margin-left: 10px;
+                .registration-row {
+                    width: 100%;
+                    margin: 0;
                 }
 
-                .register-button:hover,
-                .cancel-button:hover {
-                    background-color: #ffffff;
+                .registration-card {
+                    background-color: #88BDA4;
                 }
 
-                .login-text {
-                    text-align: center;
-                    margin-top: 20px;
+                .error {
+                    color: red;
+                    font-size: 15px;
+                    margin-top: 5px;
+                    font-family: Arial, sans-serif;
                 }
 
-                .login-text a {
-                    color: #173B4D;
-                    text-decoration: none;
-                    font-weight: bold;
-                }
-
-                .login-text a:hover {
-                    text-decoration: underline;
-                }
-
-                @media (max-width: 650px) {
-
-                    .form-row {
-                        flex-direction: column;
-                        gap: 0;
-                    }
-
-                    .registration-box {
-                        padding: 20px;
-                    }
-
-                    .gender-box {
-                        gap: 15px;
-                    }
+                .message-box {
+                    border-radius: 8px;
+                    padding: 12px 15px;
+                    margin-bottom: 20px;
+                    font-family: Arial, sans-serif;
+                    font-size: 16px;
                 }
             `}</style>
 
-            <div className="registration-page">
+            <form onSubmit={handleRegister}>
 
-                <div className="registration-box">
+                <input
+                    type="text"
+                    placeholder="Enter First Name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                />
 
-                    <div className="registration-title">
-                        Patient Registration
-                    </div>
+                <input
+                    type="text"
+                    placeholder="Enter Last Name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                />
 
-                    <form onSubmit={handleRegister}>
+                <input
+                    type="text"
+                    placeholder="Enter Phone Number"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                />
 
-                        <div className="form-row">
+                <input
+                    type="email"
+                    placeholder="Enter Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
 
-                            <div className="form-group">
-                                <label>
-                                    First Name <span className="required">*</span>
-                                </label>
+                <input
+                    type="radio"
+                    name="gender"
+                    value="Male"
+                    checked={gender === "Male"}
+                    onChange={(e) => setGender(e.target.value)}
+                />
+                Male
 
-                                <input
-                                    type="text"
-                                    placeholder="Enter First Name"
-                                    value={firstName}
-                                    onChange={(e) => setFirstName(e.target.value)}
-                                />
-                            </div>
+                <input
+                    type="radio"
+                    name="gender"
+                    value="Female"
+                    checked={gender === "Female"}
+                    onChange={(e) => setGender(e.target.value)}
+                />
+                Female
 
-                            <div className="form-group">
-                                <label>
-                                    Last Name <span className="required">*</span>
-                                </label>
+                <input
+                    type="radio"
+                    name="gender"
+                    value="Other"
+                    checked={gender === "Other"}
+                    onChange={(e) => setGender(e.target.value)}
+                />
+                Other
 
-                                <input
-                                    type="text"
-                                    placeholder="Enter Last Name"
-                                    value={lastName}
-                                    onChange={(e) => setLastName(e.target.value)}
-                                />
-                            </div>
+                <textarea
+                    placeholder="Enter Address"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                />
 
-                        </div>
+                <input
+                    type="password"
+                    placeholder="Enter Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
 
-                        <div className="form-row">
+                <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                />
 
-                            <div className="form-group">
-                                <label>
-                                    Phone <span className="required">*</span>
-                                </label>
+                <button type="submit">
+                    Register
+                </button>
 
-                                <input
-                                    type="text"
-                                    placeholder="Enter Phone Number"
-                                    value={phone}
-                                    onChange={(e) => setPhone(e.target.value)}
-                                />
-                            </div>
-
-                            <div className="form-group">
-                                <label>
-                                    Email <span className="required">*</span>
-                                </label>
-
-                                <input
-                                    type="email"
-                                    placeholder="Enter Email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                            </div>
-
-                        </div>
-
-                        <div className="form-group">
-
-                            <label>
-                                Gender <span className="required">*</span>
-                            </label>
-
-                            <div className="gender-box">
-
-                                <label className="gender-option">
-                                    <input
-                                        type="radio"
-                                        name="gender"
-                                        value="Male"
-                                        checked={gender === "Male"}
-                                        onChange={(e) => setGender(e.target.value)}
-                                    />
-                                    Male
-                                </label>
-
-                                <label className="gender-option">
-                                    <input
-                                        type="radio"
-                                        name="gender"
-                                        value="Female"
-                                        checked={gender === "Female"}
-                                        onChange={(e) => setGender(e.target.value)}
-                                    />
-                                    Female
-                                </label>
-
-                                <label className="gender-option">
-                                    <input
-                                        type="radio"
-                                        name="gender"
-                                        value="Other"
-                                        checked={gender === "Other"}
-                                        onChange={(e) => setGender(e.target.value)}
-                                    />
-                                    Other
-                                </label>
-
-                            </div>
-
-                        </div>
-
-                        <div className="form-group">
-
-                            <label>
-                                Address <span className="required">*</span>
-                            </label>
-
-                            <textarea
-                                placeholder="Enter Address"
-                                value={address}
-                                onChange={(e) => setAddress(e.target.value)}
-                            ></textarea>
-
-                        </div>
-
-                        <div className="form-row">
-
-                            <div className="form-group">
-
-                                <label>
-                                    Password <span className="required">*</span>
-                                </label>
-
-                                <input
-                                    type="password"
-                                    placeholder="Enter Password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                />
-
-                            </div>
-
-                            <div className="form-group">
-
-                                <label>
-                                    Confirm Password <span className="required">*</span>
-                                </label>
-
-                                <input
-                                    type="password"
-                                    placeholder="Confirm Password"
-                                    value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                />
-
-                            </div>
-
-                        </div>
-
-                        <div className="button-area">
-
-                            <button
-                                type="submit"
-                                className="register-button"
-                            >
-                                Register
-                            </button>
-
-                            <button
-                                type="button"
-                                className="cancel-button"
-                                onClick={() => {
-                                    setFirstName("");
-                                    setLastName("");
-                                    setGender("");
-                                    setPhone("");
-                                    setEmail("");
-                                    setAddress("");
-                                    setPassword("");
-                                    setConfirmPassword("");
-                                }}
-                            >
-                                Cancel
-                            </button>
-
-                        </div>
-
-                    </form>
-
-                    <div className="login-text">
-
-                        Already have an account?{" "}
-
-                        <a href="/PatientLogin">
-                            Login
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
+            </form>
         </>
     );
 }

@@ -1,8 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function ViewAppointment() {
 
     const [appointments, setAppointments] = useState([]);
+
+    useEffect(() => {
+        const loadAppointments = async () => {
+            try {
+                const response = await fetch("http://localhost:3001/appointment");
+
+                if (!response.ok) {
+                    throw new Error("Unable to load appointments");
+                }
+
+                const data = await response.json();
+                setAppointments(Array.isArray(data) ? data : []);
+            } catch (error) {
+                console.error("Error loading appointments:", error);
+                setAppointments([]);
+            }
+        };
+
+        loadAppointments();
+    }, []);
 
     const css = `
         * {

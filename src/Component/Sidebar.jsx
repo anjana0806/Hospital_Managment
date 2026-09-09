@@ -55,7 +55,7 @@ function Sidebar() {
                     Dashboard
                 </a>
 
-                <a href="/Appoinment">
+                <a href="/Appointment">
                     <i className="bi bi-calendar-check-fill"></i>
                     Appointment
                 </a>

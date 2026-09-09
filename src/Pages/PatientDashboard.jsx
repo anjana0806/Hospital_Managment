@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
 function PatientDashboard() {
-
     const [search, setSearch] = useState("");
 
     const doctors = [
