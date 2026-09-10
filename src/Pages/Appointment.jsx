@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 
 const createAppointment = async (appointmentData) => {
-  // json-server saves appointment records in the "appointments" array in db.json.
+
+  const oldResponse = await fetch("http://localhost:3001/appointment");
+  const oldAppointments = await oldResponse.json();
+
+  const newId = oldAppointments.length + 1;
+
+  const newAppointment = {
+    id: newId,
+    ...appointmentData
+  };
+
   const response = await fetch("http://localhost:3001/appointment", {
-    method: "POST",                                          
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(appointmentData),
+    body: JSON.stringify(newAppointment),
   });
 
   if (!response.ok) {
@@ -15,11 +25,11 @@ const createAppointment = async (appointmentData) => {
   }
 
   return response.json();
-};
+};  
 
 const Appointment = () => {
   const [formData, setFormData] = useState({
-    patient_name: "",
+    patientname: "",
     phone: "",
     department: "",
     doctor: "",
@@ -42,7 +52,7 @@ const Appointment = () => {
       await createAppointment(formData);
       alert("Appointment Booked Successfully");
       setFormData({
-        patient_name: "",
+        patientname: "",
         phone: "",
         department: "",
         doctor: "",
@@ -129,10 +139,10 @@ const Appointment = () => {
                   </label>
                   <input
                     type="text"
-                    name="patient_name"
+                    name="patientname"
                     className="form-control"
                     placeholder="Enter Your name"
-                    value={formData.patient_name}
+                    value={formData.patientname}
                     onChange={handleChange}
                     required
                   />
@@ -262,7 +272,7 @@ const Appointment = () => {
                     className="btn btn-outline-secondary ms-2"
                     onClick={() =>
                       setFormData({
-                        patient_name: "",
+                        patientname: "",
                         phone: "",
                         department: "",
                         doctor: "",

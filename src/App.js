@@ -97,6 +97,10 @@ function App() {
         return <ForgotPassword />;
     }
 
+    // if (path === "/ForgotPassword1") {
+    //     return <ForgotPassword1 />;
+    // }
+
     return (
         <div style={{ padding: "50px", textAlign: "center" }}>
             <h2>Page Not Found</h2>

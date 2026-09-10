@@ -19,9 +19,52 @@
       "email": "uma@gmail.com",
       "password": "1234",
       "id": "QMUjucVqY9g"
+    },
+    {
+      "name": "Doctor",
+      "email": "anju@gmail.com",
+      "password": "1234",
+      "id": "wR-IkdvpW1w"
+    },
+    {
+      "name": "Doctor",
+      "email": "p5@gmail.com",
+      "password": "1234",
+      "id": "2q_P0tDEH_A"
+    },
+    {
+      "name": "Doctor",
+      "email": "nillay@gmail.com",
+      "password": "1234",
+      "id": "N63h4c9bBIk"
     }
   ],
-  "patient": [],
+  "patient": [
+    {
+      "firstName": "umesh",
+      "lastName": "rathod",
+      "gender": "Male",
+      "phone": "1234567889",
+      "email": "p4@gmail.com",
+      "password": "1234",
+      "address": "wstrfgbhunjmk",
+      "status": "Registered",
+      "createdAt": "2026-09-10T05:09:30.651Z",
+      "id": "448eDcbG1WA"
+    },
+    {
+      "firstName": "milu",
+      "lastName": "makvana",
+      "gender": "Male",
+      "phone": "0987654321",
+      "email": "milu@gmail.com",
+      "password": "9099",
+      "address": "qwertyuio",
+      "status": "Registered",
+      "createdAt": "2026-09-10T11:57:16.744Z",
+      "id": "hrE_SfiyRoI"
+    }
+  ],
   "appointment": [
     {
       "patient_name": "fd",
@@ -32,6 +75,17 @@
       "appointment_time": "16:45",
       "problem": "zsxdcftvgbhnjmk,l",
       "id": "Zzrwu1bgSyQ"
+    },
+    {
+      "patientname": "anju",
+      "phone": "9873456757",
+      "department": "General Medicine",
+      "doctor": "Dr. Neha Joshi",
+      "appointment_date": "2026-09-20",
+      "appointment_time": "02:57",
+      "problem": "sedrcfvgbhnjm",
+      "id": "smuD8WZMlvw",
+      "status": "Cancelled"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

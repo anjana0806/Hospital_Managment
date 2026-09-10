@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Header1 from '../Component/Header1';
-import Sidebar1 from '../Component/Sidebar1';
 import Footer from '../Component/Footer';
-
 const DoctorDashboard = () => {
-    const [doctorName] = useState('Dr. Alex Carter');
+    // const [doctorName] = useState('Dr. Alex Carter');
     const [patients, setPatients] = useState([]);
 
     useEffect(() => {
@@ -62,22 +59,12 @@ const DoctorDashboard = () => {
                     min-height: calc(100vh - 120px);
                     overflow-y: auto;
                 }
-
+                body{
+                    background-color: #E6F2DD;
+                    }
                 .patient-dashboard {
                     padding: 25px;
                     padding-bottom: 100px;
-                }
-
-                .dashboard-heading {
-                    font-size: 28px;
-                    font-weight: bold;
-                    color: #173B4D;
-                    margin-bottom: 5px;
-                }
-
-                .dashboard-text {
-                    color: #607D86;
-                    margin-bottom: 25px;
                 }
 
                 .patient-table-card {
@@ -85,6 +72,9 @@ const DoctorDashboard = () => {
                     border-radius: 12px;
                     padding: 25px;
                     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+                    margin-right: 100px;
+                    margin-left: -40px;
+                    margin-bottom: 150px;
                 }
 
                 .patient-table-title {
@@ -163,18 +153,11 @@ const DoctorDashboard = () => {
                 }
             `}</style>
 
-            <Header1 />
-            <Sidebar1 />
-
             <main className="main-content">
                 <div className="patient-dashboard">
 
-                    <div className="dashboard-heading">
-                        Doctor Dashboard
-                    </div>
-
                     <div className="dashboard-text">
-                        Welcome, {doctorName}
+                        {/* Welcome, {doctorName} */}
                     </div>
 
                     <div className="patient-table-card">
