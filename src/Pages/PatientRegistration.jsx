@@ -223,7 +223,7 @@ function PatientRegistration() {
                     font-family: Arial, sans-serif;
                     font-size: 16px;
                 }
-            `}</style>
+           ` }</style>
 
             <form onSubmit={handleRegister}>
 
