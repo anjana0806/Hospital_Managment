@@ -17,6 +17,7 @@ import Header1 from "./Component/Header1";
 import Sidebar from "./Component/Sidebar";
 import Sidebar1 from "./Component/Sidebar1";
 import Footer from "./Component/Footer";
+import ChangePassword from "./Pages/ChangePassword";
 
 
 function App() {
@@ -67,6 +68,17 @@ function App() {
         );
     }
 
+    if (path === "/ChangePassword") {
+        return (
+            <>
+                <Header />
+                <Sidebar />
+                <ChangePassword />
+                <Footer />
+            </>
+        );
+    }
+
     if (path === "/DoctorLogin") {
         return <DoctorLogin />;
     }
@@ -85,7 +97,7 @@ function App() {
     if (path === "/ViewAppointment") {
         return (
             <>
-                <Header />
+                <Header1 />
                 <Sidebar1 />
                 <ViewAppointment />
                 <Footer />

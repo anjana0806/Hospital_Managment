@@ -26,6 +26,8 @@ function Sidebar1() {
                     align-items: center;
                     gap: 8px;
                     padding: 15px;
+                    font-size:25px;
+                    font-weight:bold;
                 }
 
                 .sidebar a {
@@ -48,9 +50,9 @@ function Sidebar1() {
 
                 <div className="sidebar-title">
                     <i className="bi bi-grid-1x2-fill"></i>
-                    MAIN MENU
+                    Doctor Portal
                 </div>
-
+                <hr></hr>
                 <a href="/DoctorDashboard" className="active">
                     <i className="bi bi-speedometer2"></i>
                     Doctor Dashboard

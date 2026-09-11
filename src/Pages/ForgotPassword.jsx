@@ -4,7 +4,6 @@ function ForgotPassword() {
 
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
-
     const handleForgotPassword = (e) => {
         e.preventDefault();
 
@@ -163,7 +162,7 @@ function ForgotPassword() {
                     )}
 
                     <a
-                        href="/patient-login"
+                        href="/DoctorLogin"
                         className="back-login"
                     >
                         Back to Login

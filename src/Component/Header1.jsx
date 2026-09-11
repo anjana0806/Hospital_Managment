@@ -71,8 +71,8 @@ const Header1 = ({ doctorName = "Doctor" }) => {
         <div className="login-link">
           <h2>Welcome Dr. {doctorName}!!!</h2>
 
-          <a href="Index.php">Home</a>
-          <a href="DoctorLogin.php">Logout</a>
+          <a href="/Index">Home</a>
+          <a href="/DoctorLogin">Logout</a>
         </div>
       </header>
     </>
