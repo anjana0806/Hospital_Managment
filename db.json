@@ -19,58 +19,9 @@
       "email": "uma@gmail.com",
       "password": "1234",
       "id": "QMUjucVqY9g"
-    },
-    {
-      "name": "Doctor",
-      "email": "anju@gmail.com",
-      "password": "1234",
-      "id": "wR-IkdvpW1w"
-    },
-    {
-      "name": "Doctor",
-      "email": "p5@gmail.com",
-      "password": "1234",
-      "id": "2q_P0tDEH_A"
-    },
-    {
-      "name": "Doctor",
-      "email": "nillay@gmail.com",
-      "password": "1234",
-      "id": "N63h4c9bBIk"
-    },
-    {
-      "name": "Doctor",
-      "email": "p4@gmail.com",
-      "password": "1234",
-      "id": "d2Z0XCpDdHM"
     }
   ],
-  "patient": [
-    {
-      "firstName": "milu",
-      "lastName": "makvana",
-      "gender": "Male",
-      "phone": "0987654321",
-      "email": "milu@gmail.com",
-      "password": "9099",
-      "address": "qwertyuio",
-      "status": "Registered",
-      "createdAt": "2026-09-10T11:57:16.744Z",
-      "id": "hrE_SfiyRoI"
-    },
-    {
-      "firstName": "nillay",
-      "lastName": "parmar",
-      "gender": "Male",
-      "phone": "8569854130",
-      "email": "p1@gmail.com",
-      "password": "1234",
-      "address": "45, santtukqaram soc v-2 palanpur jakatnaka,surat",
-      "status": "Registered",
-      "createdAt": "2026-09-11T04:16:56.486Z",
-      "id": "RWA1WaUHtxs"
-    }
-  ],
+  "patient": [],
   "appointment": [
     {
       "patientname": "fd",
@@ -81,37 +32,6 @@
       "appointment_time": "16:45",
       "problem": "zsxdcftvgbhnjmk,l",
       "id": "Zzrwu1bgSyQ"
-    },
-    {
-      "patientname": "anju",
-      "phone": "9873456757",
-      "department": "General Medicine",
-      "doctor": "Dr. Neha Joshi",
-      "appointment_date": "2026-09-20",
-      "appointment_time": "02:57",
-      "problem": "sedrcfvgbhnjm",
-      "id": "smuD8WZMlvw",
-      "status": "Cancelled"
-    },
-    {
-      "id": "rVF2WeDSNQ4",
-      "patientname": "uma",
-      "phone": "8965745697",
-      "department": "Neurology",
-      "doctor": "Dr. Neha Joshi",
-      "appointment_date": "2026-09-14",
-      "appointment_time": "13:49",
-      "problem": "sewxrdctfvgbhnjmkl"
-    },
-    {
-      "id": "Z4hxc2dhQQU",
-      "patientname": "nillay",
-      "phone": "9658745326",
-      "department": "General Medicine",
-      "doctor": "Dr. Ananya Reddy",
-      "appointment_date": "2026-09-15",
-      "appointment_time": "14:05",
-      "problem": "sewrdftghyujikol"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

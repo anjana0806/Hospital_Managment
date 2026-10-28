@@ -171,61 +171,133 @@ export default function EditProfile() {
 
             <style>
                 {`
-
-                body {
-                    background: #EAF6F8;
-                    font-family: Arial, sans-serif;
-                    font-size: 16px;
-                }
-
-                .profile-box {
-                    width: 600px;
-                    margin: 50px auto;
-                }
-
-                .section-title {
-                    margin-top: 10px;
-                    color: #173B4D;
-                    font-weight: bold;
-                    font-size: 22px;
-                }
-
-                label {
-                    font-weight: 600;
-                    margin-bottom: 7px;
-                    color: #29434E;
-                }
-
-                .required {
-                    color: #D9534F;
-                }
-
-                .form-control {
-                    height: 50px;
-                    border-radius: 8px;
-                    border: 1px solid #C9DDE3;
-                }
-
-                .btn-update {
-                    background: #E6F2DD;
-                    color: black;
-                    padding: 12px 35px;
-                    font-size: 17px;
-                    border-radius: 8px;
-                    border: none;
-                }
-
-                .btn-update:hover {
-                    background: #d3e8c8;
-                }
-                .change-password {
-                    display: inline-block;
-                    margin-top: 4px;
-                    color:#0d6efd;
-                    font-size: 16px;
-                    font-weight: 600;
-                    text-decoration: none;
-                }
+                    * {
+                        box-sizing: border-box;
+                    }
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        font-family: Arial, sans-serif;
+                        background-color: #E6F2DD;
+                    }
+                    .profile-page {
+                        margin-left: 260px;
+                        margin-top: 70px;
+                        min-height: calc(100vh - 70px);
+                        background-color: #E6F2DD;
+                        padding: 30px 70px 50px 70px;
+                    }
+                    .profile-box {
+                        width: 100%;
+                        max-width: 925px;
+                        margin: auto;
+                        background-color: #88BDA4;
+                        padding: 30px;
+                        border: 1px solid #659287;
+                        border-radius: 7px;
+                    }
+                    .profile-title {
+                        color: #173B4D;
+                        font-size: 27px;
+                        font-weight: bold;
+                        margin-bottom: 18px;
+                        padding-bottom: 18px;
+                        border-bottom: 1px solid #659287;
+                    }
+                    .form-row {
+                        display: flex;
+                        gap: 27px;
+                    }
+                    .form-group {
+                        width: 100%;
+                        margin-bottom: 18px;
+                    }
+                    .form-group label {
+                        display: block;
+                        color: #173B4D;
+                        font-size: 16px;
+                        margin-bottom: 7px;
+                    }
+                    .required {
+                        color: red;
+                    }
+                    .form-control {
+                        width: 100%;
+                        height: 53px;
+                        padding: 10px 14px;
+                        border: 1px solid #C9DDE3;
+                        border-radius: 6px;
+                        font-size: 16px;
+                        outline: none;
+                        background-color: white;
+                    }
+                    .form-control:focus {
+                        border-color: #659287;
+                    }
+                    textarea.form-control {
+                        height: 55px;
+                        resize: vertical;
+                    }
+                    .gender-box {
+                        display: flex;
+                        align-items: center;
+                        gap: 30px;
+                        margin-top: 4px;
+                    }
+                    .gender-option {
+                        display: flex !important;
+                        align-items: center;
+                        gap: 8px;
+                        color: #29434E !important;
+                    }
+                    .gender-option input {
+                        width: 20px;
+                        height: 20px;
+                    }
+                    .button-area {
+                        text-align: center;
+                        margin-top: 10px;
+                    }
+                    .update-button {
+                        padding: 12px 35px;
+                        background-color: #E6F2DD;
+                        color: #173B4D;
+                        border: none;
+                        border-radius: 8px;
+                        font-size: 17px;
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+                    .cancel-button {
+                        padding: 12px 35px;
+                        margin-left: 10px;
+                        background-color: transparent;
+                        color: #173B4D;
+                        border: 1px solid #659287;
+                        border-radius: 8px;
+                        font-size: 17px;
+                        cursor: pointer;
+                    }
+                    .update-button:hover {
+                        background-color: #d5eacb;
+                    }
+                    .cancel-button:hover {
+                        background-color: #659287;
+                        color: white;
+                    }
+                    .profile-page {
+                        margin-left: 230px;
+                        margin-top: 60px;
+                        height: calc(100vh - 100px);
+                        padding: 30px;
+                        background-color: #E6F2DD;
+                        overflow: hidden;
+                    }
+                        .profile-box {
+                        background-color: #88BDA4;
+                        padding: 30px;
+                        border-radius: 8px;
+                    }
                 `}
             </style>
 
@@ -311,28 +383,19 @@ export default function EditProfile() {
                                 />
 
                             </div>
+                        </div>
+                        <div className="form-group">
+                         <label> Gender <span className="required">*</span> </label>
+                        
+                            <div className="gender-box">
+                                <label className="gender-option">
+                                <input type="radio" name="gender" value="Male" checked={gender === "Male"} onChange={(e) => setGender(e.target.value) } /> Male </label>
 
-
-                            <div className="mb-3">
-
-                                <label>
-                                    Phone Number{" "}
-                                    <span className="required">
-                                        *
-                                    </span>
-                                </label>
-
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    className="form-control"
-                                    value={patient.phone}
-                                    onChange={handleChange}
-                                    pattern="[0-9]{10}"
-                                    maxLength="10"
-                                    required
-                                />
-                              <a href="/ChangePassword" class="change-password"> Change Password </a>
+                                <label className="gender-option">
+                                <input type="radio"  name="gender" value="Female" checked={gender === "Female"} onChange={(e) => setGender(e.target.value) } /> Female </label>
+                                
+                                <label className="gender-option">
+                                <input type="radio" name="gender" value="Other" checked={gender === "Other"} onChange={(e) => setGender(e.target.value) } /> Other </label>
                             </div>
 
 
