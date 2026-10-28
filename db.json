@@ -1,37 +1,162 @@
 {
   "doctor": [
-    [
-      {
-        "id": 1,
-        "name": "Dr. Smith",
-        "email": "d1@gmail.com",
-        "password": "1234"
-      },
-      {
-        "id": 2,
-        "name": "Dr. Smith",
-        "email": "anju@gmail.com",
-        "password": "123"
-      }
-    ],
     {
-      "name": "Doctor",
+      "id": "1",
+      "name": "Dr. Smith",
+      "email": "d1@gmail.com",
+      "password": "1234",
+      "department": "General Medicine",
+      "Specialization": "General Medicine",
+      "phone": 6985489657
+    },
+    {
+      "id": "2",
+      "name": "Dr.Ajay devgan",
+      "email": "anju@gmail.com",
+      "password": "123",
+      "department": "Neurologist",
+      "Specialization": "Neurologist",
+      "phone": 95874586213
+    },
+    {
+      "name": "Dr. Ananya Reddy",
       "email": "uma@gmail.com",
       "password": "1234",
-      "id": "QMUjucVqY9g"
+      "id": "QMUjucVqY9g",
+      "department": "Cardiologist",
+      "Specialization": "Cardiologist",
+      "phone": 95874616213
+    },
+    {
+      "name": "Dr. Raj Gupta",
+      "email": "anju@gmail.com",
+      "password": "1234",
+      "id": "wR-IkdvpW1w",
+      "department": "Gynecologist",
+      "Specialization": "Gynecologist",
+      "phone": 95875616213
+    },
+    {
+      "name": "Dr. Nillam Chodhari",
+      "email": "ansh@gmail.com",
+      "password": "1234",
+      "id": "RY50S3Dfw4k",
+      "department": "General Medicine",
+      "Specialization": "General Medicine",
+      "phone": 6985489657
+    },
+    {
+      "name": "Dr. Sajnay Gupata",
+      "email": "d6@gmail.com",
+      "password": "1234",
+      "id": "BQt5U3BFLs8",
+      "department": "General Medicine",
+      "Specialization": "General Medicine",
+      "phone": 6985489657
     }
   ],
-  "patient": [],
+  "patient": [
+    {
+      "firstName": "nillay",
+      "lastName": "patel",
+      "gender": "Male",
+      "phone": "8569854130",
+      "email": "p1@gmail.com",
+      "password": "1234",
+      "address": "45, santtukqaram soc v-2 palanpur jakatnaka,surat",
+      "status": "Registered",
+      "createdAt": "2026-09-11T04:16:56.486Z",
+      "id": "RWA1WaUHtxs"
+    },
+    {
+      "firstName": "ansh",
+      "lastName": "rathod",
+      "gender": "Male",
+      "phone": "9845765123",
+      "email": "ansh@gmail.com",
+      "password": "1234",
+      "address": "wsedrftghyujikol",
+      "status": "Registered",
+      "createdAt": "2026-09-15T16:53:33.031Z",
+      "id": "hA-hkvmeZCw"
+    }
+  ],
   "appointment": [
     {
-      "patientname": "fd",
-      "phone": "1234567890",
-      "department": "Gynecology",
+      "patientname": "anju",
+      "phone": "9873456757",
+      "department": "General Medicine",
+      "doctor": "Dr. Neha Joshi",
+      "appointment_date": "2026-09-20",
+      "appointment_time": "02:57",
+      "problem": "sedrcfvgbhnjm",
+      "id": "smuD8WZMlvw",
+      "status": "Cancelled"
+    },
+    {
+      "id": "VCt5RaacSNc",
+      "patientname": "harsh ",
+      "pemail": null,
+      "phone": "9547856245",
+      "department": "General Medicine",
+      "doctor": "Dr.Ajay devgan",
+      "appointment_date": "2026-09-14",
+      "appointment_time": "03:01",
+      "problem": "azsexdrctfvgujik",
+      "status": "Booked"
+    },
+    {
+      "id": "jmdW4-GFE7U",
+      "patientname": "prince",
+      "pemail": null,
+      "phone": "9574516515",
+      "department": "Cardiologist",
+      "doctor": "Dr.Ajay devgan",
+      "appointment_date": "2026-09-14",
+      "appointment_time": "04:01",
+      "problem": "swedrtfghyujikol",
+      "status": "Booked"
+    },
+    {
+      "id": "E3ophKNmuWo",
+      "patientname": "honey",
+      "pemail": null,
+      "phone": "9548541561",
+      "department": "General Medicine",
       "doctor": "Dr. Ananya Reddy",
-      "appointment_date": "2026-08-31",
-      "appointment_time": "16:45",
-      "problem": "zsxdcftvgbhnjmk,l",
-      "id": "Zzrwu1bgSyQ"
+      "appointment_date": "2026-09-21",
+      "appointment_time": "04:02",
+      "problem": "wesrdtfgyhujkl",
+      "status": "Booked"
+    }
+  ],
+  "notification": [
+    {
+      "id": "1",
+      "pemail": "patient@gmail.com",
+      "message": "Your appointment with Dr. Rahul Patel on 2026-09-12 has been cancelled by the doctor."
+    },
+    {
+      "message": "Your appointment with Dr. Neha Joshi on 2026-09-28 has been cancelled by the doctor.",
+      "status": "Unread",
+      "id": "g-SOgFX16QU"
+    },
+    {
+      "pemail": null,
+      "message": "janki patelDr.Ajay devgan on 2026-09-17 has been cancelled by the doctor.",
+      "status": "Unread",
+      "id": "YqljhOlbA4k"
+    },
+    {
+      "pemail": null,
+      "message": "deep Dr. Ananya Reddy on 2026-09-28 has been cancelled by the doctor.",
+      "status": "Unread",
+      "id": "gz-9F_n-Rig"
+    },
+    {
+      "message": "nillayDr. Ananya Reddy on 2026-09-15 has been cancelled by the doctor.",
+      "status": "Unread",
+      "id": "BLiEbUV-y3Q"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

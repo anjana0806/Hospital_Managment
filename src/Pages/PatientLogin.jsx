@@ -383,7 +383,7 @@ export default function PatientLogin() {
                     <div>
 
                         <a
-                            href="/Forgotpass"
+                            href="/ForgotPassword"
                             style={{
                                 color: "#0546f8",
                                 textDecoration: "none",

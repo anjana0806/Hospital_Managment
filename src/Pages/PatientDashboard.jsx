@@ -1,265 +1,194 @@
-import React, { useState } from "react";
-function PatientDashboard() {
+import React, { useEffect, useState } from "react";
+const PatientDashboard = () => {
+
+    const [doctors, setDoctors] = useState([]);
     const [search, setSearch] = useState("");
 
-    const doctors = [
-        {
-            name: "Dr. Rahul Patel",
-            department: "Cardiology",
-            specialization: "Cardiologist",
-            phone: "9876543210",
-            image: "images/doctor1.jpg"
-        },
-        {
-            name: "Dr. Priya Sharma",
-            department: "Pediatrics",
-            specialization: "Pediatrician",
-            phone: "9449849844",
-            image: "images/doctor2.jpg"
-        },
-        {
-            name: "Dr. Ananya Reddy",
-            department: "Neurology",
-            specialization: "Neurologist",
-            phone: "9856895690",
-            image: "images/doctor2.jpg"
-        },
-        {
-            name: "Dr. Nilam Shah",
-            department: "ENT",
-            specialization: "ENT Specialist",
-            phone: "8656543210",
-            image: "images/doctor2.jpg"
-        },
-        {
-            name: "Dr. Sanjay Kumar",
-            department: "Ophthalmology",
-            specialization: "Ophthalmologist",
-            phone: "9515896584",
-            image: "images/doctor1.jpg"
-        },
-        {
-            name: "Dr. Amita Desai",
-            department: "General Surgery",
-            specialization: "General Surgeon",
-            phone: "8476324526",
-            image: "images/doctor1.jpg"
-        },
-        {
-            name: "Dr. Rajesh Gupta",
-            department: "Gynecology",
-            specialization: "Gynecologist",
-            phone: "8476324526",
-            image: "images/doctor1.jpg"
-        },
-        {
-            name: "Dr. Sunita Mehta",
-            department: "General Medicine",
-            specialization: "General Medicine",
-            phone: "8476324526",
-            image: "images/doctor1.jpg"
-        },
-        {
-            name: "Dr. Arnav Jariwala",
-            department: "Psychiatry",
-            specialization: "Psychiatrist",
-            phone: "8476324526",
-            image: "images/doctor1.jpg"
-        }
-    ];
+useEffect(() => {
 
-    const filteredDoctors = doctors.filter((doctor) =>
-        doctor.name.toLowerCase().includes(search.toLowerCase()) ||
-        doctor.department.toLowerCase().includes(search.toLowerCase()) ||
-        doctor.specialization.toLowerCase().includes(search.toLowerCase())
+    fetch("http://localhost:3001/doctor")
+        .then((response) => response.json())
+        .then((data) => {
+
+            console.log(data);
+            setDoctors(data);
+
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+
+}, []);
+
+const filteredDoctors = doctors.filter((doctor) => {
+
+    return (
+        (doctor.name &&
+            doctor.name.toLowerCase().includes(search.toLowerCase())) ||
+
+        (doctor.department &&
+            doctor.department.toLowerCase().includes(search.toLowerCase())) ||
+
+        (doctor.Specialization &&
+            doctor.Specialization.toLowerCase().includes(search.toLowerCase())) ||
+
+        (doctor.phone &&
+            doctor.phone.toString().includes(search.toLowerCase()))
     );
+
+});
+
+
+    const css = `
+        .main-content {
+            top: -10px;
+            left: 0px;
+            bottom: 44px;
+            padding: 20px 30px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: #eaf4df;
+        }
+
+        .search-box {
+            width: 100%;
+            margin-bottom: 18px;
+            margin-top: -10px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .search-box input {
+            width: 100%;
+            height: 42px;
+            padding: 8px 14px;
+            border: 1px solid #b8c9bf;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            background: white;
+        }
+
+        .doctor-item {
+            margin-bottom: 18px;
+        }
+
+        .doctor-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+            height: 100%;
+        }
+
+        .doctor-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .doctor-card h2 {
+            font-size: 18px;
+            text-align: center;
+            margin: 5px 0 12px;
+        }
+
+        .doctor-card p {
+            font-size: 15px;
+            margin: 5px 0;
+        }
+    `;
+
 
     return (
         <>
-            <style>
-                {`
-                    * {
-                        box-sizing: border-box;
-                    }
+            <style>{css}</style>
 
-                    body {
-                        margin: 0;
-                        padding: 0;
-                        font-family: Arial, sans-serif;
-                        background-color: #E6F2DD;
-                    }
-
-                    .patient-dashboard {
-                        margin-left: 230px;
-                        margin-top: 60px;
-                        padding: 30px 35px 80px 37px;
-                        min-height: calc(100vh - 100px);
-                        background-color: #E6F2DD;
-                        overflow-y: auto;
-                    }
-
-                    .search-box {
-                        margin-bottom: 20px;
-                    }
-
-                    .search-title {
-                        font-size: 28px;
-                        font-weight: bold;
-                        color: #173B4D;
-                        margin-bottom: 10px;
-                    }
-
-                    .search-input {
-                        width: 100%;
-                        height: 47px;
-                        padding: 10px 15px;
-                        border: 1px solid #C9DDE3;
-                        border-radius: 8px;
-                        font-size: 15px;
-                        outline: none;
-                        background-color: white;
-                    }
-
-                    .doctor-grid {
-                        display: grid;
-                        grid-template-columns: repeat(3, 1fr);
-                        gap: 20px 25px;
-                    }
-
-                    .doctor-card {
-                        background-color: white;
-                        border-radius: 10px;
-                        padding: 20px 17px;
-                        min-height: 225px;
-                        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.10);
-                    }
-
-                    .doctor-image {
-                        width: 55px;
-                        height: 55px;
-                        object-fit: cover;
-                        border-radius: 50%;
-                        display: block;
-                        margin: 0 auto 10px auto;
-                    }
-
-                    .doctor-name {
-                        text-align: center;
-                        color: #173B4D;
-                        font-size: 20px;
-                        font-weight: bold;
-                        margin-bottom: 17px;
-                    }
-
-                    .doctor-info {
-                        font-size: 16px;
-                        color: #222;
-                        line-height: 1.8;
-                    }
-
-                    .doctor-info strong {
-                        color: #111;
-                    }
-
-                    .no-doctor {
-                        text-align: center;
-                        background-color: white;
-                        padding: 25px;
-                        border-radius: 8px;
-                        color: #666;
-                    }
-
-                    @media (max-width: 1000px) {
-                        .doctor-grid {
-                            grid-template-columns: repeat(2, 1fr);
-                        }
-                    }
-
-                    @media (max-width: 700px) {
-                        .patient-dashboard {
-                            margin-left: 0;
-                            padding: 20px;
-                        }
-
-                        .doctor-grid {
-                            grid-template-columns: 1fr;
-                        }
-                    }
-                `}
-            </style>
-
-            <div className="patient-dashboard">
+            <main className="main-content">
 
                 <div className="search-box">
 
-                    <div className="search-title">
+                    <h1 className="section-title">
                         Search
-                    </div>
+                    </h1>
 
                     <input
                         type="text"
-                        className="search-input"
                         placeholder="Search doctor..."
                         value={search}
-                        onChange={(e) => setSearch(e.target.value)}
+                        onChange={(event) => setSearch(event.target.value)}
                     />
 
                 </div>
 
-                {filteredDoctors.length > 0 ? (
 
-                    <div className="doctor-grid">
+                <div className="row">
 
-                        {filteredDoctors.map((doctor, index) => (
+                    {filteredDoctors.length > 0 ? (
 
-                            <div className="doctor-card" key={index}>
+                        filteredDoctors.map((doctor) => (
 
-                                <img
-                                    src={doctor.image}
-                                    alt="Doctor"
-                                    className="doctor-image"
-                                />
+                            <div
+                                className="col-lg-4 col-md-6 doctor-item"
+                                key={doctor.id}
+                            >
 
-                                <div className="doctor-name">
-                                    {doctor.name}
-                                </div>
+                                <div className="doctor-card">
 
-                                <div className="doctor-info">
+                                    <img
+                                        src="/images/doctor1.jpg"
+                                        className="doctor-img"
+                                        alt="Doctor"
+                                    />
 
-                                    <div>
-                                        <strong>Department:</strong>{" "}
+                                    <h2>
+                                        {doctor.name}
+                                    </h2>
+
+                                    <p>
+                                        <b>Department:</b>{" "}
                                         {doctor.department}
-                                    </div>
+                                    </p>
 
-                                    <div>
-                                        <strong>Specialization:</strong>{" "}
-                                        {doctor.specialization}
-                                    </div>
+                                    <p>
+                                        <b>Specialization:</b>{" "}
+                                        {doctor.Specialization}
+                                    </p>
 
-                                    <div>
-                                        <strong>Phone:</strong>{" "}
+                                    <p>
+                                        <b>Phone:</b>{" "}
                                         {doctor.phone}
-                                    </div>
+                                    </p>
 
                                 </div>
 
                             </div>
 
-                        ))}
+                        ))
 
-                    </div>
+                    ) : (
 
-                ) : (
+                        <div className="col-12">
 
-                    <div className="no-doctor">
-                        No doctor found.
-                    </div>
+                            <div className="alert alert-info">
+                                No doctors available.
+                            </div>
 
-                )}
+                        </div>
 
-            </div>
+                    )}
+
+                </div>
+
+            </main>
         </>
     );
-}
+};
 
 export default PatientDashboard;

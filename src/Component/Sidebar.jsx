@@ -64,6 +64,7 @@ function Sidebar() {
                     <i className="bi bi-person-circle"></i>
                     Profile
                 </a>
+        <a href="/Notification"><i class="bi bi-bell-fill"></i>Notification's</a>
 
                 <Footer />
 

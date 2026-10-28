@@ -5,7 +5,6 @@ export default function DoctorLogin() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
     const [errors, setErrors] = useState({
         email: "",
         password: "",
@@ -280,7 +279,7 @@ export default function DoctorLogin() {
                     <div style={{ marginTop: "15px" }}>
 
                         <a
-                            href="/ForgotPassword"
+                            href="/ForgotPassword1"
                             style={{
                                 color: "#0546f8",
                                 textDecoration: "none",

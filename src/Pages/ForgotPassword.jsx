@@ -12,7 +12,7 @@ function ForgotPassword() {
             return;
         }
 
-        setMessage("If this email is registered, password reset instructions will be sent.");
+    window.location.href = "/ResetPassword";
     };
 
     const css = `

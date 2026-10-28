@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../Component/Footer';
 const DoctorDashboard = () => {
-    // const [doctorName] = useState('Dr. Alex Carter');
     const [patients, setPatients] = useState([]);
 
     useEffect(() => {

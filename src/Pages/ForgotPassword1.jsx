@@ -5,15 +5,15 @@ function ForgotPassword1() {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const handleForgotPassword = (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        if (email === "") {
-            setMessage("Please enter your email.");
-            return;
-        }
+    if (email === "") {
+        setMessage("Please enter your email.");
+        return;
+    }
 
-        setMessage("If this email is registered, password reset instructions will be sent.");
-    };
+    window.location.href = "/ResetPassword1";
+};
 
     const css = `
         * {
@@ -125,7 +125,7 @@ function ForgotPassword1() {
                 <div className="forgot-box">
 
                     <div className="forgot-title">
-                        Forgot Password
+                        Forgot Password1
                     </div>
 
                     <div className="forgot-text">
