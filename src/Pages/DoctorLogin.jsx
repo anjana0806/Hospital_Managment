@@ -9,8 +9,6 @@ export default function DoctorLogin() {
         email: "",
         password: "",
     });
-
-
     const handleLogin = async (e) => {
 
         e.preventDefault();
